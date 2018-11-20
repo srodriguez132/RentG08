@@ -5,7 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/css1.css">
-       
+        <link rel="stylesheet" href="css/css_formulario.css">
+<!--        <link rel="stylesheet" href="css/960_24_col.css>-->
     </head>
     <body>
         <header id="cabecera">
@@ -26,18 +27,24 @@
             <div>
                 <section id="inicioSesion">
 
-                    <form name="inicioSesion">
-                        <label for="email">E-mail:</label>
-                        <input type="email" name="email" id="email" >
-                        <label for="contrasena">Contraseña:</label>
-                        <input type="password" name="contrasena" id="contrasena"><br>
+                    <form name="inicioSesion" class="formulario" >
+                        <label for="email" class="campo">E-mail: 
+                            <input type="email" name="email" id="email" required/>
+                        </label><br />
+                       <div class="clear"></div>
+                        <label for="contrasena">Contraseña:
+                            <input type="password" name="contrasena" id="contrasena" required/>
+                        </label><br />
+                        <div class="clear"></div>
                         
                         <button type="button" id="IniciarSesion">Iniciar Sesión</button>
+                        
                     </form>
+                    
                 </section>
             </div>
         </main>
-        <footer id="pie">
+        <footer id="seccionpie">
             <div>
                 <section class="seccionpie">
                     <address>Vitoria, País Vasco</address>
