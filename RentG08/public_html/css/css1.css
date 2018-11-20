@@ -7,6 +7,10 @@ and open the template in the editor.
     Created on : 19-nov-2018, 11:59:44
     Author     : Sergio
 */
+/*
+Fondo del documento. Obtenemos un fondo de gradiente azul.
+
+*/
 html{
     background: rgba(147,206,222,1);
     background: -moz-linear-gradient(left, rgba(147,206,222,1) 0%, rgba(147,206,222,0.93) 27%, rgba(82,170,195,0.78) 91%, rgba(73,165,191,0.78) 100%);
