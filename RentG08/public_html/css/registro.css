@@ -53,15 +53,14 @@ body{
     background:#ececec;
     border:solid #ccc;
     /*aumentando el 2px 'aparece' un borde*/
-    border-width: 2px 0;
+    border-width: 5px 0;
     padding:15px 35px;
 }
  
 label{
-    color: #666;
+    color: black;
     font-weight: bold
 }
- 
 input{
     /*border: 1px solid #999; No usar esta línea y dejar box-shadow hace efecto de profundidad*/
     border-radius:5px; /*probar con 10px se hacen ovalados los inputs*/
