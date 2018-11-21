@@ -19,7 +19,7 @@ body{
     margin: 0;
 }
 
-#cabecera{
+.cabecera{
 	background: royalblue;
 	color: white;
 	height: 80px;
@@ -79,6 +79,7 @@ nav {
                                 color: black;
 /*				text-decoration: black;*/
 			}
+                        
 			
 				nav ul li a:hover {
 					background: royalblue;
