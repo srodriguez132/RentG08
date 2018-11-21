@@ -6,10 +6,18 @@ function iniciar(){
 	boton=document.getElementById("reserva");
 //	
 	boton.addEventListener("click", agregarobjeto);
-         var boton = document.getElementById("botonPost");
-    boton.addEventListener("click", mostrarDespues);
-    var boton = document.getElementById("botonAnt");
-    boton.addEventListener("click", mostrarAntes);
+         var boton1 = document.getElementById("botonPost");
+    boton1.addEventListener("click", mostrarDespues);
+    var boton2 = document.getElementById("botonAnt");
+    boton2.addEventListener("click", mostrarAntes);
+      var boton3 = document.getElementById("botonC");
+    boton3.addEventListener("click", mostrarPorClientes);
+      var boton4 = document.getElementById("botonF");
+    boton4.addEventListener("click", mostrarPorFecha);
+      var boton5 = document.getElementById("botonM");
+    boton5.addEventListener("click", mostrarPorMatricula);
+    
+    
         var solicitud=indexedDB.open("RentG08", 2);
 	
 	solicitud.onsuccess=function(e){
@@ -127,8 +135,81 @@ zonadatos.innerHTML+="<div>" + cursor.value.email + " - " + cursor.value.contras
 	}
 
 }
+function mostrarPorClientes(){
 
+	zonadatos.innerHTML="";
+	
+	var transaccion=bd.transaction(["reservas"],"readonly");
+	
+	var almacen=transaccion.objectStore("reservas");
+	
+	var cursor=almacen.openCursor();
+	
+	cursor.addEventListener("success", mostrarDatosPorClientes, false);	
+	
+}
 
+function mostrarDatosPorClientes(e){
+	
+	var cursor=e.target.result;
+	if(cursor){
+	if (cursor.value.email===document.getElementById("cliente")){
+zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+                }
+		cursor.continue();		
+	}
+
+}
+function mostrarPorFecha(){
+
+	zonadatos.innerHTML="";
+	
+	var transaccion=bd.transaction(["reservas"],"readonly");
+	
+	var almacen=transaccion.objectStore("reservas");
+	
+	var cursor=almacen.openCursor();
+	
+	cursor.addEventListener("success", mostrarDatosDespues, false);	
+	
+}
+
+function mostrarDatosPorFecha(e){
+	
+	var cursor=e.target.result;
+	if(cursor){
+	if (cursor.value.fechaI=document.getElementById("fecha")){
+zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+                }
+		cursor.continue();		
+	}
+
+}
+function mostrarPorMatricula(){
+
+	zonadatos.innerHTML="";
+	
+	var transaccion=bd.transaction(["reservas"],"readonly");
+	
+	var almacen=transaccion.objectStore("reservas");
+	
+	var cursor=almacen.openCursor();
+	
+	cursor.addEventListener("success", mostrarDatosDespues, false);	
+	
+}
+
+function mostrarDatosPorMatricula(e){
+	
+	var cursor=e.target.result;
+	if(cursor){
+	if (cursor.value.matricula===document.getElementById("matricula")){
+zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+                }
+		cursor.continue();		
+	}
+
+}
 //function comprobarFechaNac(){
 //    var fecha = document.getElementById("fecha");
 //    var today = new Date();
