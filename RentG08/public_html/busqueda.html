@@ -4,49 +4,64 @@
         <title>RentG - Búsqueda</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/busqueda.css">
+        <link rel="stylesheet" href="css/busquedaSergio.css">
         <link rel="stylesheet" href="css/css1.css">
+        <link rel="icon" href="img/favicon.png" sizes="16x16">
         
 
 
     </head>
     <body>
-        <header id="cabecera">
-            <div>
-                <h1>RentG</h1>
-            </div>
+         <header class="cabecera" id="cabeceraBusqueda">
+            <a id="logo-header" href="#">
+                <img src="img/Logo RentG.png" style="max-width: 35%">
+         </a>
         </header>
-        <nav id="menuprincipal">
+        <nav id="menupricipal">
             <div>
                 <ul>
-                    <li><a href="index.html">Principal</a></li>
-                    <li><a href="fotos.html">Registrarse</a></li>
-                    <li><a href="videos.html">Iniciar sesión</a></li>
+                    <li id="pestanaActual"><a id="pestanaActualTexto" href="#">Búsqueda</a></li>
+                    <li><a href="registro.html">Registrarse</a></li>
+                    <li><a href="inicioSesion.html">Iniciar Sesión</a></li>
+<!--                    <li><a href="videos.html">Iniciar sesión</a></li>-->
                 </ul>
             </div>
         </nav>
         <main>
             <div>
                 <section id="busqueda">
+                     <div id="envoltura">
+                        <div id="contenedor">
+ 
+                             <div id="superior" >
+                                 <img src="img/busqueda.png" style="max-width: 18%">
+            </div>
+            <div id="cuerpo">
                     <form name="busqueda" class="formulario">
                         <label for="fechaI">Fecha Inicio:</label>
-                        <input type="date" name="fechaI" id="fechaI" >
+                            <input type="date" name="fechaI" id="fechaI" ><br /> 
                         <label for="horaI">Hora Inicio:</label>
-                        <input type="time" name="horaI" id="horaI"><br>
+                            <input type="time" name="horaI" id="horaI"><br />
                         <label for="fechaF">Fecha Fin:</label>
-                        <input type="date" name="fechaF" id="fechaF">
+                            <input type="date" name="fechaF" id="fechaF"><br />
                         <label for="horaF">Hora Fin:</label>
-                        <input type="time" name="horaF" id="horaF"><br>
+                            <input type="time" name="horaF" id="horaF"><br />
                         <label for="lugar">Lugar:</label><br>
-                        <input type="text" name="lugar" id="lugar"><br>
-                        <button type="button" id="buscar">Buscar coches</button>
+                            <select name="lugar" id="lugar">
+                                <option value ="vitoriagasteiz">Vitoria-Gasteiz</option>
+                                <option value ="donostia">Donostia</option>
+                                <option value ="bilbao">Bilbao</option>
+                            </select><br />
+                        <button type="submit" id="buscar" class="boton">Buscar coches</button>
                     </form>
+            </div>
+            <div id="pieiniciosesion">Sistema de Búsqueda de Coches</div>
                 </section>
             </div>
         </main>
-        <footer id="pie">
+        <footer id="seccionpie">
             <div>
-                <section class="seccionpie">
+                <section class="seccionpie" id="busquedapie">
                     <address>Vitoria, País Vasco</address>
                     <small>&copy; Derechos Reservados 2018</small>
                 </section>

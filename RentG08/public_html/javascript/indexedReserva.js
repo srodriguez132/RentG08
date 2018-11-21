@@ -103,7 +103,7 @@ function mostrarDatosDespues(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.fechaI>document.getElementById("fecha") && cursor.value.email===sessionStorage.getItem().email){
-zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+        zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}

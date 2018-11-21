@@ -70,13 +70,25 @@ nav {
                        
 			line-height: 80px;
 		}
-                
+                #pestanaActual {
+			 
+                        background: royalblue;
+			
+		}
 			nav ul li a {
 				display: block;
                                 font-size: 15px;
                                 font-weight:bold;
 				padding: 0 10px;
                                 color: black;
+/*				text-decoration: black;*/
+			}
+                        #pestanaActualTexto{
+				display: block;
+                                font-size: 15px;
+                                font-weight:bold;
+				padding: 0 10px;
+                                color: white;
 /*				text-decoration: black;*/
 			}
                         
@@ -105,6 +117,20 @@ nav {
 }
 
 #registropie{
+    position: static;
+    /* Altura total del footer en px con valor negativo */
+    margin-top: 950px;
+    /* Altura del footer en px. Se han restado los 5px del margen
+       superior mas los 5px del margen inferior
+    */
+    height: 40px;
+    padding:5px 0px;
+    clear: both;
+    background: royalblue;
+    text-align: center;
+    color: #fff;
+}
+#busquedapie{
     position: static;
     /* Altura total del footer en px con valor negativo */
     margin-top: 950px;
