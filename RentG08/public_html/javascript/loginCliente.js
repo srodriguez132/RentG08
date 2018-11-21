@@ -3,7 +3,7 @@ window.addEventListener("load", inicio, false);
 var bd;
 
 function inicio(){
-       boton=document.getElementById("iniciosesion");
+       boton=document.getElementById("btnInicioSesion");
        boton.addEventListener("click",login, false);
        
         var solicitud=indexedDB.open("RentG08");
@@ -18,7 +18,7 @@ function login(){
     var transaccion = bd.transaction(["clientes"], "readonly");
     var objectStore = transaccion.objectStore("clientes");
     
-    var valido = document.formDatos.checkValidity();
+    var valido = document.logueo.checkValidity();
     
     if(valido){
     
@@ -37,7 +37,7 @@ function login(){
       }
       else {
             if(existe){
-                location.href="asignarOCancelar.html";
+//                location.href="asignarOCancelar.html";
             }
             else{
                alert("Email o contraseña incorrectos"); 

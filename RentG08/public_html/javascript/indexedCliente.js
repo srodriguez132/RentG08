@@ -7,7 +7,7 @@ function iniciar(){
 //	
 	boton.addEventListener("click", agregarobjeto);
  
-        var solicitud=indexedDB.open("RentG08", 2);
+        var solicitud=indexedDB.open("RentG08");
 	
 	solicitud.onsuccess=function(e){
 		bd=e.target.result;				
