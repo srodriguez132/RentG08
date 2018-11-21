@@ -36,7 +36,7 @@ function agregarobjeto(){
 	
 	var movil=document.getElementById("movil").value;
        
-        var imagen=document.getElementById("imagen").value;
+        var imagen=document.getElementById("caja").value;
         
 	var transaccion=bd.transaction(["clientes"], "readwrite");
 	
