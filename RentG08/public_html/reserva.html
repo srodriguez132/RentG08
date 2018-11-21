@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang ="es">
     <head>
-        <title>RentG - Búsqueda</title>
+        <title>RentG - Reserva</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/busqueda.css">
+        <link rel="stylesheet" href="css/css_formulario.css">
         <link rel="stylesheet" href="css/css1.css">
 
 
@@ -26,19 +26,26 @@
         </nav>
         <main>
             <div>
-                <section id="busqueda">
-                    <form name="busqueda" class="formulario">
+                <section id="formulario">
+                    <form name="reserva" class="formulario">
+                        <label for="coche">Coche:</label>
+                        <select name="libro" id="listado">
+                            <option value="1">Coche 1</option>
+                            <option value="2">Coche 2</option>
+                            <option value="3">Coche 3</option>
+                            <option value="4">Coche 4</option>
+                        </select><br>
                         <label for="fechaI">Fecha Inicio:</label>
                         <input type="date" name="fechaI" id="fechaI" >
                         <label for="horaI">Hora Inicio:</label>
                         <input type="time" name="horaI" id="horaI"><br>
-                        <label for="fechaF">Fecha Fin:</label>
+                        <label for="fechaF">Fecha Fin: </label>
                         <input type="date" name="fechaF" id="fechaF">
                         <label for="horaF">Hora Fin:</label>
                         <input type="time" name="horaF" id="horaF"><br>
                         <label for="lugar">Lugar:</label><br>
                         <input type="text" name="lugar" id="lugar"><br>
-                        <button type="button" id="buscar">Buscar coches</button>
+                        <button type="button" id="reservar">Reservar</button>
                     </form>
                 </section>
             </div>
