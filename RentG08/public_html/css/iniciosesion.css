@@ -6,7 +6,7 @@ body{
     margin: 0;
 }
  
-#registrar{
+#logueo{
         float:left;
         width:80%;
         font-size:20px;
@@ -54,7 +54,7 @@ body{
     border:solid #ccc;
     /*aumentando el 2px 'aparece' un borde*/
     border-width: 5px 0;
-    padding:15px 35px;
+    padding:25px 35px;
 }
  
 label{
@@ -70,7 +70,7 @@ input{
     line-height: 20px;
     padding:0 2px;
     /*Para separar los inputs*/
-    display: block;
+   display: block;
     width: 230px;
 }
  
@@ -106,7 +106,7 @@ input#contrasenia{
     top: 3px;
 }
  
-#pieregistro{
+#pieiniciosesion{
     border-top: 5px solid #333;
     color: #fff;
     font-size: 11px;

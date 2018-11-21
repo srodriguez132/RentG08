@@ -1,9 +1,9 @@
 // JavaScript Document
-var bd;
+var cajadatos,bd;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
-	boton=document.getElementById("registrarse");
+	var boton=document.getElementById("registrarse");
 //	
 	boton.addEventListener("click", agregarobjeto);
  
@@ -44,6 +44,7 @@ function agregarobjeto(){
         
         var agregar;
         
+        
              
 	       agregar=almacen.add({email: email, contrasena:contrasena, nombre: nombre, apellido:apellido, movil: movil, imagen: imagen});
                //agregar.addEventListener("success", mostrar, false);
@@ -55,11 +56,11 @@ function agregarobjeto(){
                
                agregar.onerror = function(e) {
                alert('Este email ya está en uso');
-               location.href="altaPacientes.html";
+//               location.href="altaPacientes.html";
                };
                
                
-               
+          cajadatos.innerHTML= "";     
               
                 
              
