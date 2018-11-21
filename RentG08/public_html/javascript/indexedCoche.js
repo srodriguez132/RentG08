@@ -2,113 +2,45 @@
 var bd;
 function iniciar() {
 
-    var database = indexedDB.open("RentG08");
+    var solicitud = indexedDB.open("RentG08");
 
+    solicitud.onsuccess = function (e) {
+        bd = e.target.result;
+        agregarObjeto();
+    };
 
+    solicitud.onerror = function (e) {
+        alert(solicitud.error.message);
+    };
 
-    dataBase.onupgradeneeded = function (e) {
+    solicitud.onupgradeneeded = function (e) {
+        bd = e.target.result;
+        bd.createObjectStore("coches", {keyPath: "matricula"});
+    };
+    
+}
+    
 
-        active = dataBase.result;
-
-        object = active.createObjectStore("coches", {keyPath: 'matricula'});
+    function agregarobjeto() {
+        var transaccion = bd.transaction(["coches"], "readwrite");
 
         var almacen = transaccion.objectStore("coches");
-
         var agregar;
 
-        agregar = almacen.add({
-            matricula: '1111aaa',
-            marca: 'BMW',
-            imagen: 'img/bmw.png'
-        });
-        
-        agregar = almacen.add({
-            matricula: '2222bbb',
-            marca: 'Citroen',
-            imagen: 'img/citroen.png'
-        });
-        
-        agregar = almacen.add({
-            matricula: '3333ccc',
-            marca: 'Ford',
-            imagen: 'img/ford.png'
-        });
-        
-        agregar = almacen.add({
-            matricula: '4444ddd',
-            marca: 'Mercedes',
-            imagen: 'img/mercedes.png'
-        });
-    };
+        agregar = almacen.add({matricula: "1111aaa", marca: "BMW", imagen: "//img/bmw.png"},
+                {matricula: "2222bbb", marca: "Citroen", imagen: "//img/citroen.png"},
+                {matricula: "3333ccc", marca: "Ford", imagen: "//img/ford.png"},
+                {matricula: "4444dd", marca: "Mercedes", imagen: "//img/mercedes.png"});
+        agregar.onsuccess = function (e) {
+            alert('Registro completado correctamente');
+//                   location.href="altaPacientes.html";
+        };
 
-    dataBase.onsuccess = function (e) {
-        alert('Base de datos cargada correctamente');
+        agregar.onerror = function (e) {
+            alert('Registro fallido');
+//               location.href="altaPacientes.html";
+        };
+    }
+    ;
 
-    };
-
-    dataBase.onerror = function (e) {
-        alert('Error cargando la base de datos');
-    };
-}
-
-/*
- function mostrar(){
- 
- zonadatos.innerHTML="";
- 
- var transaccion=bd.transaction(["pacientes"],"readonly");
- 
- var almacen=transaccion.objectStore("pacientes");
- 
- var cursor=almacen.openCursor();
- 
- cursor.addEventListener("success", mostrarDatos, false);	
- 
- }
- 
- function mostrarDatos(e){
- 
- var cursor=e.target.result;
- 
- if(cursor){
- 
- //zonadatos.innerHTML+="<div>" + cursor.value.TIS + " - " + cursor.value.gnombre + " - " + cursor.value.telefono +" - " + cursor.value.fecha + " - " +cursor.value.hombre +" - " + cursor.value.mujer + "</div>";
- 
- cursor.continue();
- 
- 
- }
- 
- }*/
-
-//function comprobarFechaNac(){
-//    var fecha = document.getElementById("fecha");
-//    var today = new Date();
-//    var anyo = today.getFullYear();
-//    var mes = today.getMonth() + 1;
-//    var dia = today.getDate();
-//    
-//    if(dia<10) {
-//        dia='0'+dia;
-//    } 
-//    if(mes<10) {
-//       mes='0'+mes;
-//    } 
-//    var hoy = anyo + "-" + mes + "-" + dia;
-//    
-//    if(fecha.value < hoy){
-//        var valido = document.formDatos.checkValidity();
-//        if(valido){
-//         agregarobjeto();
-//        }
-//        else{
-//         alert('Algun dato introducido no es correcto'); 
-//        }
-//    }
-//    else{
-//        alert("Error en la fecha de nacimiento. La fecha introducida es posterior a hoy.");
-//    }
-//    
-//}
-
-window.addEventListener("load", iniciar, false);
+window.addEventListener("load", iniciar);
