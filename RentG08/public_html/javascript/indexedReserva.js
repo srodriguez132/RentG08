@@ -43,6 +43,8 @@ function agregarobjeto(){
         
         var fechaHoraF = new Date(fechaF+' '+horaF);
         
+        var lugar=document.getElementById("lugar").value;
+        
 	var transaccion=bd.transaction(["reservas"], "readwrite");
 	
 	var almacen=transaccion.objectStore("reservas");
@@ -50,11 +52,11 @@ function agregarobjeto(){
         var agregar;
         
              
-	       agregar=almacen.add({id: id, email:email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF});
+	       agregar=almacen.add({id: id, email:email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF, lugar: lugar});
                //agregar.addEventListener("success", mostrar, false);
                
                agregar.onsuccess = function(e){
-                   alert('Reservao completada correctamente');
+                   alert('Reserva completada correctamente');
 //                   location.href="altaPacientes.html";
                };
                

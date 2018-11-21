@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/css_formulario.css">
         <link rel="stylesheet" href="css/css1.css">
-
+        <link rel="stylesheet" href="css/reserva.css">
+        <script src="javascript/indexedReserva.js"></script>
+        <script src="javascript/indexedCoche.js"></script>
 
     </head>
     <body>
@@ -25,11 +27,20 @@
             </div>
         </nav>
         <main>
+             <div>
+                <section id="reservar">
+                      <div id="envoltura">
+                        <div id="contenedor">
+ 
+                             <div id="superior" >
+                                 <img src="img/favicon.png" style="max-width: 18%">
+            </div>
+            
             <div>
-                <section id="formulario">
+                <section id="cuerpo">
                     <form name="reserva" class="formulario">
                         <label for="coche">Coche:</label>
-                        <select name="libro" id="listado">
+                        <select name="coche" id="coche">
                             <option value="1">Coche 1</option>
                             <option value="2">Coche 2</option>
                             <option value="3">Coche 3</option>
@@ -43,14 +54,18 @@
                         <input type="date" name="fechaF" id="fechaF">
                         <label for="horaF">Hora Fin:</label>
                         <input type="time" name="horaF" id="horaF"><br>
-                        <label for="lugar">Lugar:</label><br>
-                        <input type="text" name="lugar" id="lugar"><br>
-                        <button type="button" id="reservar">Reservar</button>
+                        <label for="lugar">Lugar:</label>
+                        <select name="lugar" id="lugar">
+                            <option value="1">Vitoria-Gasteiz</option>
+                            <option value="2">Donostia</option>
+                            <option value="3">Bilbao</option>
+                        </select><br>
+                        <button type="button" id="boton">Reservar</button>
                     </form>
                 </section>
             </div>
         </main>
-        <footer id="pie">
+        <footer id="piereserva">
             <div>
                 <section class="seccionpie">
                     <address>Vitoria, País Vasco</address>
