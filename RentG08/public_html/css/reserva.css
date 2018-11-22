@@ -4,25 +4,26 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     font-size:12px;
     margin: 0;
+    height: 1000px;
 }
  
 #reservar{
         float:left;
         width:80%;
-        font-size:24px;
+        font-size:20px;
         font-weight:bold;
         color:#FFF;
-        text-align:right;
+        text-align:left;
 }
  
 #envoltura{
         position:absolute;
     /*left al 50% y top al 60% para que quede centrado en la pantalla*/
-    left:25%;
-    top:60%;
+    left:50%;
+    top:50%;
     margin-left:-165px;
     margin-top: -210px;
-    width: 1000px;
+    width: 330px;
  
 }
  
@@ -44,7 +45,7 @@ body{
     border-bottom: 5px solid #333;
     padding-top: 5px;
     /*color:#FFF;*/
-    height:120px;
+    height:70px;
     line-height:50px;
     text-align:center;
 }
@@ -54,7 +55,7 @@ body{
     border:solid #ccc;
     /*aumentando el 2px 'aparece' un borde*/
     border-width: 5px 0;
-    padding:15px 35px;
+    padding:25px 35px;
 }
  
 label{
@@ -69,6 +70,8 @@ input{
     height: 24px;
     line-height: 20px;
     padding:0 2px;
+    /*Para separar los inputs*/
+    display: block;
     width: 230px;
 }
  
@@ -84,7 +87,18 @@ input#contrasenia{
     padding-left: 25px;
  
 }*/
- 
+ select{
+    /*border: 1px solid #999; No usar esta línea y dejar box-shadow hace efecto de profundidad*/
+    border-radius:5px; /*probar con 10px se hacen ovalados los inputs*/
+    box-shadow: 2px 2px 3px 1px rgba(0,0,0,.8);
+    font:bold 12px Arial, Helvetica, sans-serif;
+    height: 24px;
+    line-height: 20px;
+    padding:0 2px;
+    /*Para separar los inputs*/
+    display: block;
+    width: 238px;
+}
 .boton{
     background: royalblue;
     /*background: -moz-linear-gradient(top,#eee,#ccc);*/
@@ -94,6 +108,7 @@ input#contrasenia{
     /*Color del texto*/
     color: white;
     width: 120px;
+    height: 30px;
 }
  
 /*Tip estas instrucciones animan al boton enviar
@@ -123,7 +138,15 @@ p{
     padding-bottom: 20px;
 }
  
-/*Para separar el botón de ingresar*/
+/*Para separar el botón de reservar*/
 p#bot{
     padding-top: 30px;
+}
+
+#reservapie{
+    height: 40px;
+    position: absolute;
+    left: 0; 
+    bottom: -500px;
+    width: 100%;
 }
