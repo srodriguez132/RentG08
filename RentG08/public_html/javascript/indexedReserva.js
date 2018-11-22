@@ -63,7 +63,7 @@ function agregarobjeto(){
         var agregar;
         
              
-	       agregar=almacen.add({id: id, email:email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF, lugar: lugar});
+	       agregar=almacen.add({id: id, email:sessionStorage.getItem().email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF, lugar: lugar});
                //agregar.addEventListener("success", mostrar, false);
                
                agregar.onsuccess = function(e){
