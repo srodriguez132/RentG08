@@ -10,10 +10,10 @@ function iniciar() {
 
         var almacen = transaccion.objectStore("coches");
         var agregar;
-        const datos = [{matricula: "1111aaa", marca: "BMW", imagen: "//img/bmw.png"},
-                {matricula: "2222bbb", marca: "Citroen", imagen: "//img/citroen.png"},
-                {matricula: "3333ccc", marca: "Ford", imagen: "//img/ford.png"},
-                {matricula: "4444ddd", marca: "Mercedes", imagen: "//img/mercedes.png"}];
+        const datos = [{matricula: "1111aaa", marca: "BMW", imagen: "../img/bmw.png"},
+                {matricula: "2222bbb", marca: "Citroen", imagen: "../img/citroen.png"},
+                {matricula: "3333ccc", marca: "Ford", imagen: "../img/ford.png"},
+                {matricula: "4444ddd", marca: "Mercedes", imagen: "../img/mercedes.png"}];
      for (var i in datos) {
          almacen.add(datos[i]);
     }
