@@ -7,14 +7,19 @@ function iniciar(){
 //	
 	boton.addEventListener("click", agregarobjeto);
           boton1 = document.getElementById("botonPost");
+          if(boton1)
     boton1.addEventListener("click", mostrarDespues);
      boton2 = document.getElementById("botonAnt");
+     if(boton2)
     boton2.addEventListener("click", mostrarAntes);
        boton3 = document.getElementById("botonC");
+       if(boton3)
     boton3.addEventListener("click", mostrarPorClientes);
        boton4 = document.getElementById("botonF");
+       if(boton4)
     boton4.addEventListener("click", mostrarPorFecha);
        boton5 = document.getElementById("botonM");
+       if(boton5)
     boton5.addEventListener("click", mostrarPorMatricula);
     
     
