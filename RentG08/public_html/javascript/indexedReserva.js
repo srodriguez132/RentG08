@@ -1,5 +1,5 @@
 // JavaScript Document
-var bd;
+var bd, zonadatos;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
@@ -38,7 +38,7 @@ function agregarobjeto(){
     
         var id=Math.random();
         
-	var email=document.getElementById("email").value;
+	var email=sessionStorage.getItem().email;
         
         var matricula=document.getElementById("matricula").value;
 	
@@ -63,7 +63,7 @@ function agregarobjeto(){
         var agregar;
         
              
-	       agregar=almacen.add({id: id, email:sessionStorage.getItem().email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF, lugar: lugar});
+	       agregar=almacen.add({id: id, email:email, matricula: matricula, fechahoraI:fechahoraI, fechahoraF: fechahoraF, lugar: lugar});
                //agregar.addEventListener("success", mostrar, false);
                
                agregar.onsuccess = function(e){
@@ -103,7 +103,7 @@ function mostrarDatosDespues(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.fechaI>document.getElementById("fecha") && cursor.value.email===sessionStorage.getItem().email){
-        zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+        zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.matricula + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
@@ -129,7 +129,7 @@ function mostrarDatosAntes(e){
 	
 	if(cursor){
 		if (cursor.value.fechaI<document.getElementById("fecha")&& cursor.value.email===sessionStorage.getItem().email)){
-zonadatos.innerHTML+="<div>" + cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+zonadatos.innerHTML+="<div>" +  cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
