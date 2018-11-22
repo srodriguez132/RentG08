@@ -6,15 +6,15 @@ function iniciar(){
 	boton=document.getElementById("reserva");
 //	
 	boton.addEventListener("click", agregarobjeto);
-         var boton1 = document.getElementById("botonPost");
+          boton1 = document.getElementById("botonPost");
     boton1.addEventListener("click", mostrarDespues);
-    var boton2 = document.getElementById("botonAnt");
+     boton2 = document.getElementById("botonAnt");
     boton2.addEventListener("click", mostrarAntes);
-      var boton3 = document.getElementById("botonC");
+       boton3 = document.getElementById("botonC");
     boton3.addEventListener("click", mostrarPorClientes);
-      var boton4 = document.getElementById("botonF");
+       boton4 = document.getElementById("botonF");
     boton4.addEventListener("click", mostrarPorFecha);
-      var boton5 = document.getElementById("botonM");
+       boton5 = document.getElementById("botonM");
     boton5.addEventListener("click", mostrarPorMatricula);
     
     
@@ -103,7 +103,7 @@ function mostrarDatosDespues(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.fechaI>document.getElementById("fecha") && cursor.value.email===sessionStorage.getItem().email){
-        zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.matricula + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+        zonadatos.innerHTML+="<div>"+ cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.matricula + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
@@ -128,7 +128,7 @@ function mostrarDatosAntes(e){
 	var cursor=e.target.result;
 	
 	if(cursor){
-		if (cursor.value.fechaI<document.getElementById("fecha")&& cursor.value.email===sessionStorage.getItem().email)){
+		if (cursor.value.fechaI<document.getElementById("fecha")&& cursor.value.email===sessionStorage.getItem().email){
 zonadatos.innerHTML+="<div>" +  cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
@@ -154,7 +154,7 @@ function mostrarDatosPorClientes(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.email===document.getElementById("cliente")){
-zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+zonadatos.innerHTML+="<div>"+ cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
@@ -179,7 +179,7 @@ function mostrarDatosPorFecha(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.fechaI=document.getElementById("fecha")){
-zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+zonadatos.innerHTML+="<div>"+ cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
@@ -204,7 +204,7 @@ function mostrarDatosPorMatricula(e){
 	var cursor=e.target.result;
 	if(cursor){
 	if (cursor.value.matricula===document.getElementById("matricula")){
-zonadatos.innerHTML+="<div>" cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
+zonadatos.innerHTML+="<div>" +cursor.value.id + " - "+ cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI +" - " + cursor.value.fechaHoraF + " - " +cursor.value.lugar + "</div>";	
                 }
 		cursor.continue();		
 	}
