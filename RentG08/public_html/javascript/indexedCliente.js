@@ -4,7 +4,7 @@ function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
 	var boton=document.getElementById("registrarse");
-//	
+	
 	boton.addEventListener("click", agregarobjeto);
  
         var solicitud=indexedDB.open("RentG08");
@@ -31,8 +31,7 @@ function agregarobjeto(){
 	
 	var nombre=document.getElementById("nombre").value;
         
-        var apellido=document.getElementById("apellido").value;
-	
+        var apellido=document.getElementById("apellido").value;	
 	
 	var movil=document.getElementById("movil").value;
        
