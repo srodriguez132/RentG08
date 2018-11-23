@@ -37,7 +37,7 @@ function agregarobjeto(){
        
         var imagen=document.getElementById("caja").value;
         
-	var transaccion=bd.transaction(["clientes"], "readwrite");
+	var transaccion=bd.transaction("clientes", "readwrite");
 	
 	var almacen=transaccion.objectStore("clientes");
         
