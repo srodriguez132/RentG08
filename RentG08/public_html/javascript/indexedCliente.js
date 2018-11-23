@@ -59,10 +59,11 @@ function agregarobjeto(){
                };
                
                
-          cajadatos.innerHTML= "";     
-              
-                
-             
+  document.getElementById("email").value = "";
+     document.getElementById("contrasena").value = "";         
+          document.getElementById("nombre").value = "";      
+             document.getElementById("apellido").value = "";
+             document.getElementById("movil").value = "";
 }
 
 /*
