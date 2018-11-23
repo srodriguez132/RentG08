@@ -1,9 +1,9 @@
 // JavaScript Document
 var bd, zonadatos;
-function iniciar() {
-    zonadatos = document.getElementById("zonadatos");
-
-    boton = document.getElementById("reservar");
+function iniciar(){
+	zonadatos=document.getElementById("zonadatos");
+	
+	boton=document.getElementById("reservar");
 //	
     boton.addEventListener("click", agregarobjeto);
 

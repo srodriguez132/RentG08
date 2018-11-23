@@ -29,7 +29,7 @@ function login(){
       if (cursor) {
           if(cursor.value.email === document.getElementById("email").value && cursor.value.contrasena === document.getElementById("contrasena").value){
               existe = true;
-              location.href="busqueda.html";
+              location.href="index.html";
           }
           else{
           cursor.continue();
