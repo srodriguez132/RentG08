@@ -44,7 +44,10 @@ function agregarobjeto(){
         var agregar;
         
         
-             
+             if(document.registro.email.value===''){
+                 alert('Rellene los campos');
+             }
+             else{
 	       agregar=almacen.add({email: email, contrasena:contrasena, nombre: nombre, apellido:apellido, movil: movil, imagen: imagen});
                //agregar.addEventListener("success", mostrar, false);
                
@@ -55,15 +58,17 @@ function agregarobjeto(){
                
                agregar.onerror = function(e) {
                alert('Este email ya está en uso');
-//               location.href="altaPacientes.html";
+
                };
+            
+            document.getElementById("email").value = "";
+            document.getElementById("contrasena").value = "";         
+            document.getElementById("nombre").value = "";      
+            document.getElementById("apellido").value = "";
+            document.getElementById("movil").value = "";
+         }
                
-               
-  document.getElementById("email").value = "";
-     document.getElementById("contrasena").value = "";         
-          document.getElementById("nombre").value = "";      
-             document.getElementById("apellido").value = "";
-             document.getElementById("movil").value = "";
+
 }
 
 /*
