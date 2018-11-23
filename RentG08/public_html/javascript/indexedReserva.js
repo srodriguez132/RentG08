@@ -3,7 +3,7 @@ var bd, zonadatos;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
-	boton=document.getElementById("reserva");
+	boton=document.getElementById("reservar");
 //	
 	boton.addEventListener("click", agregarobjeto);
           boton1 = document.getElementById("botonPost");
