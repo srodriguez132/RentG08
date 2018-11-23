@@ -7,8 +7,8 @@ body{
     height: 300px;
 }
  
-#reservar{
-        float:cente;
+#seccionreserva{
+        float:center;
         width:20%;
         font-size:20px;
         font-weight:bold;
@@ -111,7 +111,7 @@ input#contrasenia{
     background: linear-gradient(top,#fc6,#f63);
 /*    Color del texto*/
     color: white;
-    width: 50px;
+    width: 80px;
     height: 30px;
     text-align: center;
 }
