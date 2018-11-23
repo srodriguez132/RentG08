@@ -44,8 +44,12 @@ function agregarobjeto(){
         var agregar;
         
         
-             if(document.registro.email.value===''){
+             if(document.registro.email.value===''|| document.registro.contrasena.value==='' || document.registro.nombre.value==='' || document.registro.apellido.value===''){
                  alert('Rellene los campos');
+             }
+             else if(document.registro.nombre.value.length<=2){
+                 alert('El nombre debe contener más de dos caracteres');
+                 
              }
              else{
 	       agregar=almacen.add({email: email, contrasena:contrasena, nombre: nombre, apellido:apellido, movil: movil, imagen: imagen});

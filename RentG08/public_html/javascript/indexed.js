@@ -1,79 +1,88 @@
 var cajadatos,bdClientes, bdCoches, bdReservas;
+
 function iniciar(){
-    iniciarClientes();
+  
     iniciarCoches();
     iniciarReservas();
+    
 }
-function iniciarClientes(){
-	zonadatos=document.getElementById("zonadatos");
-	
-	var boton=document.getElementById("registrarse");
-	
-	boton.addEventListener("click", agregarobjetocliente);
- 
-        var solicitud=indexedDB.open("RentG08");
-	
-	solicitud.onsuccess=function(e){
-		bdClientes=e.target.result;				
-	};
-        
-        solicitud.onerror=function(e){
-		alert(solicitud.error.message);		
-	};
-	
-	solicitud.onupgradeneeded=function(e){
-		bdClientes=e.target.result;
-		bdClientes.createObjectStore("clientes", {keyPath: "email"});
-	};	
-}
+
+
+
+//function iniciarClientes(){
+//	zonadatos=document.getElementById("zonadatos");
+//	
+//	var boton=document.getElementById("registrarse");
+//	
+//	boton.addEventListener("click", agregarobjetocliente);
+// 
+//        var solicitud=indexedDB.open("RentG08");
+//	
+//	solicitud.onsuccess=function(e){
+//		bdClientes=e.target.result;				
+//	};
+//        
+//        solicitud.onerror=function(e){
+//		alert(solicitud.error.message);		
+//	};
+//	
+//	solicitud.onupgradeneeded=function(e){
+//		bdClientes=e.target.result;
+//		bdClientes.createObjectStore("clientes", {keyPath: "email"});
+//	};	
+//}
       
-function agregarobjetocliente(){
-        
-	var email=document.getElementById("email").value;
-        
-        var contrasena=document.getElementById("contrasena").value;
-	
-	var nombre=document.getElementById("nombre").value;
-        
-        var apellido=document.getElementById("apellido").value;	
-	
-	var movil=document.getElementById("movil").value;
-       
-        var imagen=document.getElementById("caja").value;
-        
-	var transaccion=bdClientes.transaction("clientes", "readwrite");
-	
-	var almacen=transaccion.objectStore("clientes");
-        
-        var agregar;
-        
-        
-             if(document.registro.email.value===''){
-                 alert('Rellene los campos');
-             }
-             else{
-	       agregar=almacen.add({email: email, contrasena:contrasena, nombre: nombre, apellido:apellido, movil: movil, imagen: imagen});
-               //agregar.addEventListener("success", mostrar, false);
-               
-               agregar.onsuccess = function(e){
-                   alert('Registro completado correctamente');
-//                   location.href="altaPacientes.html";
-               };
-               
-               agregar.onerror = function(e) {
-               alert('Este email ya está en uso');
-
-               };
-            
-            document.getElementById("email").value = "";
-            document.getElementById("contrasena").value = "";         
-            document.getElementById("nombre").value = "";      
-            document.getElementById("apellido").value = "";
-            document.getElementById("movil").value = "";
-         }
-               
-
-}
+//function agregarobjetocliente(){
+//        
+//	var email=document.getElementById("email").value;
+//        
+//        var contrasena=document.getElementById("contrasena").value;
+//	
+//	var nombre=document.getElementById("nombre").value;
+//        
+//        var apellido=document.getElementById("apellido").value;	
+//	
+//	var movil=document.getElementById("movil").value;
+//       
+//        var imagen=document.getElementById("caja").value;
+//        
+//	var transaccion=bdClientes.transaction("clientes", "readwrite");
+//	
+//	var almacen=transaccion.objectStore("clientes");
+//        
+//        var agregar;
+//        
+//        
+//             if(document.registro.email.value===''|| document.registro.contrasena.value==='' || document.registro.nombre.value==='' || document.registro.apellido.value===''){
+//                 alert('Rellene los campos');
+//             }
+//             else if(document.registro.nombre.length<=2){
+//                 alert('El nombre debe contener más de dos caracteres');
+//                 
+//             }
+//             else{
+//	       agregar=almacen.add({email: email, contrasena:contrasena, nombre: nombre, apellido:apellido, movil: movil, imagen: imagen});
+//               //agregar.addEventListener("success", mostrar, false);
+//               
+//               agregar.onsuccess = function(e){
+//                   alert('Registro completado correctamente');
+////                   location.href="altaPacientes.html";
+//               };
+//               
+//               agregar.onerror = function(e) {
+//               alert('Este email ya está en uso');
+//
+//               };
+//            
+//            document.getElementById("email").value = "";
+//            document.getElementById("contrasena").value = "";         
+//            document.getElementById("nombre").value = "";      
+//            document.getElementById("apellido").value = "";
+//            document.getElementById("movil").value = "";
+//         }
+//               
+//
+//}
 
 function iniciarCoches() {
 
@@ -133,7 +142,8 @@ function iniciarReservas(){
         boton5.addEventListener("click", mostrarPorMatricula);
 
 
-    var solicitud = indexedDB.open("RentG08", 2);
+//    var solicitud = indexedDB.open("RentG08", 2);
+ var solicitud = indexedDB.open("RentG08");
 
     solicitud.onsuccess = function (e) {
         bdReservas = e.target.result;
@@ -188,8 +198,8 @@ function agregarobjetoreserva() {
     //agregar.addEventListener("success", mostrar, false);
 
     agregar.onsuccess = function (e) {
-//        alert('Reserva completada correctamente');
-//                   location.href="altaPacientes.html";
+        alert('Reserva completada correctamente');
+//                   
     };
 
     agregar.onerror = function (e) {
@@ -331,5 +341,9 @@ function mostrarDatosPorMatricula(e) {
     }
 
 }
+
+
+//registro.window.addEventListener("load", iniciarRegistro, false);
+
 
 window.addEventListener("load", iniciar, false);
