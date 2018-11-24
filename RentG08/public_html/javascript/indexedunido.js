@@ -87,9 +87,8 @@ function agregarreserva() {
 
     var agregar;
     
-    if (document.reserva.fechaI.value === '' || document.reserva.horaI.value === '' ||
-            document.reserva.fechaF.value === '' || document.reserva.horaF.value === ''||
-            document.reserva.coche.value === ''){
+    if(document.reserva.fechaI.value==="" || document.reserva.horaI.value==="" ||
+            document.reserva.fechaF.value==="" || document.reserva.horaF.value===""){
         alert('Completa todos los campos');
     }
     else{
@@ -105,7 +104,7 @@ function agregarreserva() {
         alert('Este email ya está en uso');
 
     };
-    }
+}
 }
 
 function agregarobjeto() {
