@@ -37,6 +37,16 @@ function iniciar() {
     var solicitud = indexedDB.open("RentG08");
     solicitud.onsuccess = function (e) {
         bd = e.target.result;
+        
+        var transaccion = bd.transaction(["coches"], "readwrite");
+        var almacen = transaccion.objectStore("coches");
+        const datos = [{matricula: "1111aaa", marca: "BMW", imagen: "../img/bmw.png"},
+            {matricula: "2222bbb", marca: "Citroen", imagen: "../img/citroen.png"},
+            {matricula: "3333ccc", marca: "Ford", imagen: "../img/ford.png"},
+            {matricula: "4444ddd", marca: "Mercedes", imagen: "../img/mercedes.png"}];
+        for (var i in datos) {
+            almacen.add(datos[i]);
+        }
     };
 
     solicitud.onerror = function (e) {
@@ -55,7 +65,6 @@ function iniciar() {
 
         //Crear base de datos de coches
         bdCoches = bd.createObjectStore("coches", {keyPath: 'matricula'});
-
 
     };
 }
@@ -111,7 +120,7 @@ function agregarreserva() {
     }
     var hoy = anyo + "-" + mes + "-" + dia;
     var hora = hora + ":" + min;
-    
+
 //      if(document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
 //              || document.reserva.fechaF.value === '' || document.reserva.horaF.value === ''){
 //          alert('Rellene todos los campos');
@@ -129,19 +138,19 @@ function agregarreserva() {
 //          alert('La hora de entrega debe ser posterior a la hora de inicio');
 //      }
 //      else{
-        agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
-        //agregar.addEventListener("success", mostrar, false);
+    agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
+    //agregar.addEventListener("success", mostrar, false);
 
-        agregar.onsuccess = function (e) {
-            alert('Registro completado correctamente');
+    agregar.onsuccess = function (e) {
+        alert('Registro completado correctamente');
 //                   location.href="altaPacientes.html";
-        };
+    };
 
-        agregar.onerror = function (e) {
-            alert('Este email ya está en uso');
+    agregar.onerror = function (e) {
+        alert('Este email ya está en uso');
 
-        };
-      
+    };
+
 }
 
 function agregarobjeto() {
@@ -194,17 +203,6 @@ function agregarobjeto() {
 
 }
 
-//function agregarcoches(){
-//        var transaccion = bdCoches.transaction("coches", "readwrite");
-//        var almacen = transaccion.objectStore("coches");
-//        const datos = [{matricula: "1111aaa", marca: "BMW", imagen: "../img/bmw.png"},
-//            {matricula: "2222bbb", marca: "Citroen", imagen: "../img/citroen.png"},
-//            {matricula: "3333ccc", marca: "Ford", imagen: "../img/ford.png"},
-//            {matricula: "4444ddd", marca: "Mercedes", imagen: "../img/mercedes.png"}];
-//        for (var i in datos) {
-//            almacen.add(datos[i]);
-//        }
-//}
+
 
 window.addEventListener("load", iniciar, false);
-//window.addEventListener("load", agregarcoches, false);
