@@ -2,7 +2,7 @@ var cajadatos, bdClientes, bdCoches, bdReservas;
 
 function iniciar() {
 
-//    iniciarCoches();
+    iniciarCoches();
     iniciarReservas();
 
 }
@@ -156,7 +156,7 @@ function iniciarReservas() {
     solicitud.onupgradeneeded = function (e) {
         bdReservas = e.target.result;
         bdReservas.createObjectStore("reservas", {keyPath: "id"});
-         bdCoches.createObjectStore("coches", {keyPath: "matricula"});
+        bdCoches.createObjectStore("coches", {keyPath: "matricula"});
         var transaccion = bdCoches.transaction("coches", "readwrite");
 
         var almacen = transaccion.objectStore("coches");

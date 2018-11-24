@@ -3,9 +3,9 @@ var cajadatos,bd;
 function iniciar(){
 	zonadatos=document.getElementById("zonadatos");
 	
-	var boton=document.getElementById("registrarse");
+	var botonregistro=document.getElementById("registrarse");
 	
-	boton.addEventListener("click", agregarobjeto);
+	botonregistro.addEventListener("click", agregarobjeto);
  
         var solicitud=indexedDB.open("RentG08");
 	
