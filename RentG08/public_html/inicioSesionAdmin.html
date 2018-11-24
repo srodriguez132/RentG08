@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang ="es">
     <head>
-        <title>RentG - Inicio Sesión</title>
+        <title>RentG - Inicio Sesión Responsable</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/iniciosesion.css">
+        <link rel="stylesheet" href="css/inicioSesionAdmin.css">
         <link rel="stylesheet" href="css/css1.css">
         
         <link rel="icon" href="img/favicon.png" sizes="16x16">
-        <script src="javascript/loginCliente.js"></script>
-        <script src="javascript/indexedunido.js"></script>
-<!--        <link rel="stylesheet" href="css/960_24_col.css>-->
+        <script src="javascript/loginAdmin.js"></script>
+<!--        <script src="javascript/loginCliente.js"></script>
+        <script src="javascript/indexedunido.js"></script>-->
+
     </head>
      <body>
         <header class= "cabecera" id="cabeceraInicioSesion">
@@ -40,14 +41,14 @@
                         <div id="contenedor">
  
                              <div id="superior" >
-                                 <img src="img/login.png" style="max-width: 18%">
+                                 <img src="img/admin.png" style="max-width: 18%">
             </div>
             <div id="cuerpo">
                 
 
                 <form name="logueo" class="formulario" id="iniciarsesion" method="post">
-                    <label for="email" class="campo">E-mail: 
-                            <input type="email" name="email" id="email" required/>
+                    <label for="text" class="campo">Usuario: 
+                            <input type="text" name="usuario" id="usuario" required/>
                         </label><br />
                         <div class="clear"></div>
                         <label for="contrasena">Contraseña:
@@ -63,10 +64,10 @@
                     
                
             </div>
-            <div id="pieiniciosesion">Sistema de Inicio de Sesión de Usuario <br />
-          
-                <a id="link" href="inicioSesionAdmin.html">Inicio Sesión Responsable</a>
+            <div id="pieiniciosesion">Sistema de Inicio de Sesión Responsable <br />
+                <a id="link" href="inicioSesion.html">Inicio Sesión Usuario</a>
             </div>
+           
                 </section>
             </div>
         </main>

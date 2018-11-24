@@ -41,7 +41,8 @@ function login(){
             }
             else{
                alert("Email o contraseña incorrectos"); 
-               location.href="inicioSesion"; 
+            
+               location.href="inicioSesion.html"; 
                sessionStorage.clear();
            }
       }
@@ -51,7 +52,8 @@ function login(){
     
     else
         alert('Email o contraseña incorrectos');
-    
+        location.href="inicioSesion.html"; 
+         
 }
 
 
