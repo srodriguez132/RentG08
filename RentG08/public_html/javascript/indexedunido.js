@@ -127,7 +127,6 @@ function agregarobjeto() {
 
     var agregar;
 
-
     if (document.registro.email.value === '' || document.registro.contrasena.value === '' || document.registro.nombre.value === '' || document.registro.apellido.value === '') {
         alert('Rellene los campos');
     } else if (document.registro.nombre.value.length <= 2) {
