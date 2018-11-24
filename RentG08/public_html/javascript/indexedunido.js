@@ -62,13 +62,13 @@ function iniciar() {
 ;
 
 function agregarreserva() {
-    i = i+1;
+    i = i + 1;
     var id = i;
-    
+
     for (var e = 0; e < sessionStorage.length; e++) {
         var email = sessionStorage.key(e);
     }
-    
+
     var matricula = document.getElementById("coche").value;
 
     var fechaI = document.getElementById("fechaI").value;
@@ -86,25 +86,62 @@ function agregarreserva() {
     var almacen = transaccion.objectStore("reservas");
 
     var agregar;
-    
-    if(document.reserva.fechaI.value==="" || document.reserva.horaI.value==="" ||
-            document.reserva.fechaF.value==="" || document.reserva.horaF.value===""){
-        alert('Completa todos los campos');
+
+    var hoy = new Date();
+    var anyo = hoy.getFullYear();
+    var mes = hoy.getMonth() + 1;
+    var dia = hoy.getDate();
+    var hora = hoy.getHours();
+    var min = hoy.getMinutes();
+
+    if (min < 10) {
+        min = '0' + min;
     }
-    else{
-    agregar = almacen.add({id: id, email: email, matricula: matricula,fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
-    //agregar.addEventListener("success", mostrar, false);
 
-    agregar.onsuccess = function (e) {
-        alert('Registro completado correctamente');
+    if (hora < 10) {
+        hora = '0' + hora;
+    }
+
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    var hoy = anyo + "-" + mes + "-" + dia;
+    var hora = hora + ":" + min;
+    
+//      if(document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
+//              || document.reserva.fechaF.value === '' || document.reserva.horaF.value === ''){
+//          alert('Rellene todos los campos');
+//      }
+//      else if(fechaI.value <= hoy){
+//          alert('La fecha de inicio debe ser posterior a la de hoy');
+//      }
+//      else if(fechaI.value === hoy && horaI.value < hora){
+//          alert('La hora de inicio debe ser mayor a la actual');
+//      }
+//      else if( fechaF.value <= fechaI.value){
+//          alert('La fecha de fin debe ser mayor que la fecha de inicio');
+//      }
+//      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
+//          alert('La hora de entrega debe ser posterior a la hora de inicio');
+//      }
+//      else{
+        agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
+        //agregar.addEventListener("success", mostrar, false);
+
+        agregar.onsuccess = function (e) {
+            alert('Registro completado correctamente');
 //                   location.href="altaPacientes.html";
-    };
+        };
 
-    agregar.onerror = function (e) {
-        alert('Este email ya está en uso');
+        agregar.onerror = function (e) {
+            alert('Este email ya está en uso');
 
-    };
-}
+        };
+      
 }
 
 function agregarobjeto() {
@@ -126,6 +163,7 @@ function agregarobjeto() {
     var almacen = transaccion.objectStore("clientes");
 
     var agregar;
+
 
     if (document.registro.email.value === '' || document.registro.contrasena.value === '' || document.registro.nombre.value === '' || document.registro.apellido.value === '') {
         alert('Rellene los campos');
