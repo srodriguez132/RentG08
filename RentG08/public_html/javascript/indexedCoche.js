@@ -1,8 +1,8 @@
 // JavaScript Document
 var bd;
-function iniciar() {
+ function iniciar() {
 
-    var solicitud = indexedDB.open("RentG08");
+   var solicitud = indexedDB.open("RentG08");
 
     solicitud.onsuccess = function (e) {
         
