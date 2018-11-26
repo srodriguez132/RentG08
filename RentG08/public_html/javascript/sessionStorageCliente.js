@@ -7,6 +7,7 @@ function iniciar() {
     boton.addEventListener('click', nuevoitem, false);
     }
     mostrarNombre();
+    
 }
 function nuevoitem() {
 //    var valid = document.iniciarSesion.checkValidity();
