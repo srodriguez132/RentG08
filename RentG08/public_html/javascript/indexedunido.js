@@ -153,6 +153,8 @@ function agregarobjeto() {
     var transaccion = bd.transaction("clientes", "readwrite");
     var almacen = transaccion.objectStore("clientes");
     var agregar;
+     var valido = document.datos.checkValidity();
+    if(valido){ 
     if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === '') {
         alert('Rellene los campos');
     } else if (document.datos.nombre.value.length <= 2) {
@@ -163,7 +165,7 @@ function agregarobjeto() {
 
         agregar.onsuccess = function (e) {
             alert('Registro completado correctamente');
-//                   location.href="altaPacientes.html";
+
         };
         agregar.onerror = function (e) {
             alert('Este email ya está en uso');
@@ -176,6 +178,10 @@ function agregarobjeto() {
     }
 
 
+}
+else{
+    alert('Introduzca datos correctos');
+}
 }
 function mostrarClientes() {
      cajaReservas.innerHTML = "";
@@ -196,7 +202,7 @@ function mostrarDatosPorClientes(e) {
     if (cursor) {
     var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
       var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
-   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
+   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div><br />";
         cursor.continue();
         }
    }
