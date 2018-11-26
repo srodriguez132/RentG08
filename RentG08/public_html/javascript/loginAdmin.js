@@ -14,14 +14,15 @@ function login(){
     
     var usuario=document.getElementById("usuario").value;
     var contrasena=document.getElementById("contrasena").value;
+    
     if(usuario==="admin" && contrasena==="admin"){
         alert('Bienvenido, Responsable de Oficina');
-        location.href="consultaReservaRS.html";
+        window.location.href="consultaReservaRS.html";
         
     }
     else{
-    alert('Usuario o contraseña incorrectos');
-    location.href="inicioSesionAdmin.html"; 
+        alert('Usuario o contraseña incorrectos');
+        window.location.href="inicioSesionAdmin.html"; 
     }
     
     
