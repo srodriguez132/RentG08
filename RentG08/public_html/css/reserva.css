@@ -103,6 +103,9 @@ input#contrasenia{
 /*    display: block;
     width: 238px;*/
 }
+a{
+  color: white;
+}
 .boton{
     background: royalblue;
     background: -moz-linear-gradient(top,#eee,#ccc);
