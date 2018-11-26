@@ -37,7 +37,7 @@ function iniciar() {
     var solicitud = indexedDB.open("RentG08");
     solicitud.onsuccess = function (e) {
         bd = e.target.result;
-        
+
         var transaccion = bd.transaction(["coches"], "readwrite");
         var almacen = transaccion.objectStore("coches");
         const datos = [{matricula: "1111aaa", marca: "BMW", imagen: "../img/bmw.png"},
@@ -74,11 +74,21 @@ function agregarreserva() {
     i = i + 1;
     var id = i;
 
-    for (var e = 0; e < sessionStorage.length; e++) {
-        var email = sessionStorage.key(e);
+//    for (var e = 0; e < sessionStorage.length; e++) {
+        var email = sessionStorage.getItem("email");
+//    }
+    
+    var matricula;
+    
+    if (document.getElementById('coche1').checked === true) {
+        matricula = document.getElementById("coche1").value;
+    } else if (document.getElementById('coche2').checked === true) {
+        matricula = document.getElementById("coche2").value;
+    } else if (document.getElementById('coche3').checked === true) {
+        matricula = document.getElementById("coche3").value;
+    } else if (document.getElementById('coche4').checked === true) {
+        matricula = document.getElementById("coche4").value;
     }
-
-    var matricula = document.getElementById("coche").value;
 
     var fechaI = document.getElementById("fechaI").value;
 
