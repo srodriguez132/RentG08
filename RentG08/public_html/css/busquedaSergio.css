@@ -97,7 +97,9 @@ input#contrasenia{
     padding-left: 25px;
  
 }*/
- 
+#btnBuscar{
+ color: white;
+}
 .boton{
     background: royalblue;
     /*background: -moz-linear-gradient(top,#eee,#ccc);*/
