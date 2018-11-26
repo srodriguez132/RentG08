@@ -114,12 +114,12 @@ function agregarreserva() {
                     document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
         alert('Rellene todos los campos');
     }
-      else if(fechaI.value <= hoy){
+    else if(fechaI.value <= hoy){
           alert('La fecha de inicio debe ser posterior a la de hoy');
-      }
-      else if(fechaI.value === hoy && horaI.value < hora){
+    }
+    else if(fechaI.value === hoy && horaI.value < hora){
           alert('La hora de inicio debe ser mayor a la actual');
-      }
+    }
       else if( fechaF.value <= fechaI.value){
           alert('La fecha de fin debe ser mayor que la fecha de inicio');
       }
