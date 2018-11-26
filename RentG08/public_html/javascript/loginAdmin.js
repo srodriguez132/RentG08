@@ -17,12 +17,12 @@ function login(){
     
     if(usuario==="admin" && contrasena==="admin"){
         alert('Bienvenido, Responsable de Oficina');
-        window.location.href="consultaReservaRS.html";
+        location.href="consultaReservaRS.html";
         
     }
     else{
         alert('Usuario o contraseña incorrectos');
-        window.location.href="inicioSesionAdmin.html"; 
+       location.href="inicioSesionAdmin.html"; 
     }
     
     

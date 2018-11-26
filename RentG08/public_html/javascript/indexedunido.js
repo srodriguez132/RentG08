@@ -3,7 +3,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 var i = 0;
 function iniciar() {
 
-    zonadatos = document.getElementById("zonadatos");
+    zonadatos = document.getElementById("cajaReservas");
     if (document.getElementById("registrarse")) {
 
         var botonregistro = document.getElementById("registrarse");
@@ -25,9 +25,9 @@ function iniciar() {
 //    var boton4 = document.getElementById("botonF");
 //    if (boton4)
 //        boton4.addEventListener("click", mostrarPorFecha);
-//    var boton5 = document.getElementById("botonM");
-//    if (boton5)
-//        boton5.addEventListener("click", mostrarPorMatricula);
+    var boton5 = document.getElementById("botonM");
+    if (boton5)
+        boton5.addEventListener("click", mostrarPorMatricula);
 
     //nombre de la base de datos
     var solicitud = indexedDB.open("RentG08");
@@ -174,7 +174,31 @@ function agregarobjeto() {
 
 
 }
+function mostrarPorMatricula() {
 
+    zonadatos.innerHTML = "";
+
+    var transaccion = bd.transaction(["reservas"], "readonly");
+
+    var almacen = transaccion.objectStore("reservas");
+
+    var cursor = almacen.openCursor();
+
+    cursor.addEventListener("success", mostrarDatosPorMatricula, false);
+
+}
+
+function mostrarDatosPorMatricula(e) {
+
+    var cursor = e.target.result;
+    if (cursor) {
+        if (cursor.value.matricula === document.getElementById("consMatricula")) {
+            zonadatos.innerHTML += "<div>" + cursor.value.id + " - " + cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI + " - " + cursor.value.fechaHoraF + " - " + cursor.value.lugar + "</div>";
+        }
+        cursor.continue();
+    }
+
+}
 
 
 window.addEventListener("load", iniciar, false);
