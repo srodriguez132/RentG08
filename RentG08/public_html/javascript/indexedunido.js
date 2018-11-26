@@ -176,21 +176,15 @@ function agregarobjeto() {
 
 }
 function mostrarPorMatricula() {
- var buscar = document.getElementById("fecha").value;
-    cajaReservas.innerHTML = "";
-
-    var transaccion = bd.transaction(["reservas"]);
-
+     cajaReservas.innerHTML = "";
+    var buscar = document.getElementById("consMatricula").value; 
+    var transaccion = bd.transaction(["reservas"],"readonly");
     var almacen = transaccion.objectStore("reservas");
     var indice = almacen.index("BuscarMatricula");
     var rango = IDBKeyRange.only(buscar);
 
     var cursor = indice.openCursor(rango);
-   // puntero.addEventListener("success", mostrarlista);
-
-  //  var cursor = almacen.openCursor();
-
-    cursor.addEventListener("success", mostrarDatosPorMatricula, false);
+    cursor.addEventListener("success", mostrarDatosPorMatricula);
 
 }
 
@@ -199,12 +193,11 @@ function mostrarDatosPorMatricula(e) {
     var cursor = e.target.result;
     if (cursor) {
     var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
-       var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
-     //   if (cursor.value.matricula === document.getElementById("consMatricula")) {
+      var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
    cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
-              cursor.continue();
+        cursor.continue();
         }
-    }
+   }
 
 
 
