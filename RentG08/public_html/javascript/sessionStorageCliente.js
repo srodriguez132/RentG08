@@ -1,10 +1,10 @@
 window.addEventListener('load', iniciar, false);
 //window.addEventListener('load', mostrarNombre, false);
-
+var bd;
 function iniciar() {
     var boton = document.getElementById('btnInicioSesion');
-    if(boton){
-    boton.addEventListener('click', nuevoitem, false);
+    if (boton) {
+        boton.addEventListener('click', nuevoitem, false);
     }
     mostrarNombre();
 }
@@ -15,19 +15,40 @@ function nuevoitem() {
     var clave = document.getElementById('email').value;
 //    var valor = document.getElementById('nombre').value;
     sessionStorage.setItem("email", clave);
-  //  mostrar();
-   
+    //  mostrar();
+
     document.getElementById('nombre').value = '';
 //    }
 }
 function mostrarNombre() {
-  var cajadatos = document.getElementById('nombreSesion');
-   cajadatos.innerHTML = '';
-//    for (var f = 0; f < sessionStorage.length; f++) {
-var clave = sessionStorage.getItem("email");
-     //  var valor = sessionStorage.getItem("valor");
-     cajadatos.innerHTML += 'Hola, ' + clave;
-//    }
+    var clave;
+    var cajadatos = document.getElementById('nombreSesion');
+    cajadatos.innerHTML = '';
+    var solicitud = indexedDB.open("RentG08");
+
+    solicitud.onsuccess = function (e) {
+        bd = e.target.result;
+        var transaccion = bd.transaction(["clientes"], "readonly");
+        var objectStore = transaccion.objectStore("clientes");
+        objectStore.openCursor().onsuccess = function (event) {
+            var cursor = event.target.result;
+            if (cursor) {
+                //Comprueba que los datos existen en la base de datos y que coincidan
+                if (cursor.value.email === sessionStorage.getItem("email")) {
+                    clave = cursor.value.nombre;
+                    cajadatos.innerHTML += 'Hola, ' + clave;
+                } else {
+
+                    cursor.continue();
+
+                }
+            }
+
+        };
+    };
+
+
+
 
 
 }
