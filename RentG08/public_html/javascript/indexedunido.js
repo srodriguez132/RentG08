@@ -174,9 +174,9 @@ function agregarobjeto() {
     var agregar;
 
 
-    if (document.registro.email.value === '' || document.registro.contrasena.value === '' || document.registro.nombre.value === '' || document.registro.apellido.value === '') {
+    if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === '') {
         alert('Rellene los campos');
-    } else if (document.registro.nombre.value.length <= 2) {
+    } else if (document.datos.nombre.value.length <= 2) {
         alert('El nombre debe contener más de dos caracteres');
 
     } else {

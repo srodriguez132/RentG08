@@ -9,22 +9,20 @@
         <link rel="icon" href="img/favicon.png" sizes="16x16">
         <link rel="stylesheet" href="css/arrastrarImagen.css">
 
-        <!--        <link rel="stylesheet" href="css/960_24_col.css>-->
         
         <script src="javascript/indexedunido.js"></script>
         <script src="javascript/arrastrarImagen.js"></script>
         <script src="javascript/sessionStorageCliente.js"></script>
+        <script src="javascript/comprobacionTReal.js"></script>
+        
     </head>
     <body>
         <header class="cabecera" id="cabeceraRegistro">
             <a id="logo-header" href="#">
                 <img src="img/Logo RentG.png" style="max-width: 35%">
-                <!--			<span class="site-name">FranciscoAMK</span>
-                                        <span class="site-desc">Diseño web / WordPress / Tutoriales</span>-->
-            </a> <!-- / #logo-header -->
-            <!--            <div>
-                            <h1>RentG</h1>
-                        </div>-->
+              
+            </a>
+            
         </header>
         <nav id="menupricipal">
             <div>
@@ -32,7 +30,7 @@
                     <li id="busqueda"><a href="index.html">Búsqueda</a></li>
                     <li id="pestanaActual"><a id="pestanaActualTexto" href="#">Registrarse</a></li>
                     <li><a href="inicioSesion.html">Iniciar Sesión</a></li>
-                    <!--                    <li><a href="videos.html">Iniciar sesión</a></li>-->
+                    
                 </ul>
             </div>
         </nav>
@@ -45,7 +43,7 @@
                                 <img src="img/favicon.png" style="max-width: 18%">
                             </div>
                             <div id="cuerpo">
-                                <form name="registro" class="formulario" id="registro">
+                                <form name="datos" class="formulario" id="registro">
                                     <label for="email" class="campo">E-mail: 
                                         <input type="email" name="email" id="email" required/>
                                     </label><br />
@@ -54,7 +52,7 @@
                                         <input type="password"  name="contrasena" id="contrasena" required/>
                                     </label><br />
                                     <label for="nombre">Nombre:
-                                        <input type="text" id="nombre" maxlength="20" name="nombre">
+                                        <input type="text" id="nombre" maxlength="20" name="nombre" pattern="^[a-zA-Z]{3,20}$"/>
                                     </label><br />
                                     <label for="apellido">Apellido:
                                         <input type="text" name="apellido" maxlength="40" id="apellido" required/>
@@ -62,9 +60,7 @@
                                     <label for="movil">Móvil:
                                         <input type="tel" name="movil" id="movil" pattern="^(\+34|0034|34)?[6|7|9][0-9]{8}$"/>
                                     </label><br />
-                                    <!--                        <label for="imagen">Imagen:
-                                                                <input type="image" name="imagen" id="imagen"/>
-                                                            </label><br />-->
+                                   
                                     <label for="imagen">Imagen:
                                     </label>
                                     <section id="caja">
