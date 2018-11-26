@@ -113,18 +113,18 @@ function agregarreserva() {
                     document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
         alert('Rellene todos los campos');
     }
-//      else if(fechaI.value <= hoy){
-//          alert('La fecha de inicio debe ser posterior a la de hoy');
-//      }
-//      else if(fechaI.value === hoy && horaI.value < hora){
-//          alert('La hora de inicio debe ser mayor a la actual');
-//      }
-//      else if( fechaF.value <= fechaI.value){
-//          alert('La fecha de fin debe ser mayor que la fecha de inicio');
-//      }
-//      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
-//          alert('La hora de entrega debe ser posterior a la hora de inicio');
-//      }
+      else if(fechaI.value <= hoy){
+          alert('La fecha de inicio debe ser posterior a la de hoy');
+      }
+      else if(fechaI.value === hoy && horaI.value < hora){
+          alert('La hora de inicio debe ser mayor a la actual');
+      }
+      else if( fechaF.value <= fechaI.value){
+          alert('La fecha de fin debe ser mayor que la fecha de inicio');
+      }
+      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
+          alert('La hora de entrega debe ser posterior a la hora de inicio');
+      }
     else {
         agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
         //agregar.addEventListener("success", mostrar, false);
