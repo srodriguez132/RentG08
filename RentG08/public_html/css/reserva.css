@@ -1,6 +1,5 @@
 body{
     background:whitesmoke;
-    /*background:#181907;*/
     font-family:Arial, Helvetica, sans-serif;
     font-size:12px;
     margin: 0;
@@ -8,7 +7,7 @@ body{
 }
  
 #seccionreserva{
-        float:center;
+        float: center;
         width:20%;
         font-size:20px;
         font-weight:bold;
@@ -30,12 +29,7 @@ body{
  
 #contenedor{
     background-color:royalblue;
-    /*background-color:#356AA0;*/
-    /*box-shadow: 0 0 0 9px rgba(128,0,0,.1);*/
-    /*Margen de sombra alrededor del contenedor 8px negro*/
     box-shadow: 3px 3px 10px 5px rgba(0,0,0,.8);
-    /*Las 3 líneas siguientes, sirven para el borde redondeado
-     * pero para diferentes navegadores*/
     -webkit-border-radius:5px;
     -moz-border-radius:10px;
     border-radius:10px;
@@ -45,7 +39,6 @@ body{
     /*linea azul que separa logo*/
     border-bottom: 5px solid #333;
     padding-top: 5px;
-    /*color:#FFF;*/
     height:70px;
     line-height:50px;
     text-align:center;
