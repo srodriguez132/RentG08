@@ -18,7 +18,7 @@ function login(){
     var transaccion = bd.transaction(["clientes"], "readonly");
     var objectStore = transaccion.objectStore("clientes");
     
-    var valido = document.logueo.checkValidity();
+    var valido = document.datos.checkValidity();
     
     if(valido){
     
@@ -27,33 +27,44 @@ function login(){
     var existe = false;
     
       if (cursor) {
+            //Comprueba que los datos existen en la base de datos y que coincidan
           if(cursor.value.email === document.getElementById("email").value && cursor.value.contrasena === document.getElementById("contrasena").value){
+
               existe = true;
               location.href="inicioLogueado.html";
+              
+          }
+          
+          else{
+          
+          cursor.continue();
+
+          }
+      }
+      
+      
+      else {
+          if(existe){
+ 
+                location.href="inicioLogueado.html";
           }
           else{
-          cursor.continue();
-          }
-      }
-      else {
-            if(existe){
-//                location.href="asignarOCancelar.html";
-            }
-            else{
-               alert("Email o contraseña incorrectos"); 
-            
+               
                location.href="inicioSesion.html"; 
                sessionStorage.clear();
-           }
-      }
+
+          }
+        }
+        
     };
     
-    } //fin valido
+    }
     
-    else
+    else{
         alert('Email o contraseña incorrectos');
-        location.href="inicioSesion.html"; 
+        
          
+}
 }
 
 
