@@ -1,9 +1,9 @@
-var bd, cajadatos, bdCoches, bdReservas, bdClientes;
+var bd, cajadatos, bdCoches, bdReservas, bdClientes,cajaReservas;
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var i = 0;
 function iniciar() {
 
-    zonadatos = document.getElementById("cajaReservas");
+    cajaReservas = document.getElementById("cajaReservas");
     if (document.getElementById("registrarse")) {
 
         var botonregistro = document.getElementById("registrarse");
@@ -53,6 +53,7 @@ function iniciar() {
         bdClientes = bd.createObjectStore("clientes", {keyPath: "email"});
         //Crear base de datos de reservas
         bdReservas = bd.createObjectStore("reservas", {keyPath: 'id'});
+        bdReservas.createIndex("BuscarMatricula", "matricula", {unique: false});
         //Crear base de datos de coches
         bdCoches = bd.createObjectStore("coches", {keyPath: 'matricula'});
     };
@@ -175,14 +176,19 @@ function agregarobjeto() {
 
 }
 function mostrarPorMatricula() {
+ var buscar = document.getElementById("fecha").value;
+    cajaReservas.innerHTML = "";
 
-    zonadatos.innerHTML = "";
-
-    var transaccion = bd.transaction(["reservas"], "readonly");
+    var transaccion = bd.transaction(["reservas"]);
 
     var almacen = transaccion.objectStore("reservas");
+    var indice = almacen.index("BuscarMatricula");
+    var rango = IDBKeyRange.only(buscar);
 
-    var cursor = almacen.openCursor();
+    var cursor = indice.openCursor(rango);
+   // puntero.addEventListener("success", mostrarlista);
+
+  //  var cursor = almacen.openCursor();
 
     cursor.addEventListener("success", mostrarDatosPorMatricula, false);
 
@@ -192,13 +198,14 @@ function mostrarDatosPorMatricula(e) {
 
     var cursor = e.target.result;
     if (cursor) {
-        if (cursor.value.matricula === document.getElementById("consMatricula")) {
-            zonadatos.innerHTML += "<div>" + cursor.value.id + " - " + cursor.value.email + " - " + cursor.value.contraseña + " - " + cursor.value.fechaHoraI + " - " + cursor.value.fechaHoraF + " - " + cursor.value.lugar + "</div>";
+    var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
+       var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
+     //   if (cursor.value.matricula === document.getElementById("consMatricula")) {
+   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
+              cursor.continue();
         }
-        cursor.continue();
     }
 
-}
 
 
 window.addEventListener("load", iniciar, false);
