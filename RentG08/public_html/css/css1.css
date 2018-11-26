@@ -91,6 +91,14 @@ nav {
                                 color: white;
 /*				text-decoration: black;*/
 			}
+                        #nombreSesion{
+/*                                display: block;
+*/                                font-size: 15px;
+                                font-weight:bold;
+				padding: 0 10px;
+                                color: royalblue;
+                                
+                        }
                         
 			
 				nav ul li a:hover {
