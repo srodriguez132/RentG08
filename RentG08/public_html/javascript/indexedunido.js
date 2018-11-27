@@ -101,7 +101,7 @@ function agregarreserva() {
 
             agregar.onsuccess = function (e) {
                 alert('Reserva realizada correctamente');
-//                   location.href="altaPacientes.html";
+                   location.href="inicioLogueado.html";
             };
             agregar.onerror = function (e) {
                 alert('No se ha podido realizar la reserva');
