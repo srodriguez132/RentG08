@@ -181,7 +181,7 @@ function agregarobjeto() {
 
             agregar.onsuccess = function (e) {
                 alert('Registro completado correctamente');
-
+                location.href="inicioSesion.html";
             };
             agregar.onerror = function (e) {
                 alert('Este email ya está en uso');
