@@ -64,54 +64,53 @@ function iniciar() {
 ;
 function agregarreserva() {
     if (sessionStorage.getItem("email") !== null) {
-    var id = Math.random();
+        var id = Math.random();
 //    for (var e = 0; e < sessionStorage.length; e++) {
-    var email = sessionStorage.getItem("email");
+        var email = sessionStorage.getItem("email");
 //    }
 
-    var matricula;
-    if (document.getElementById('coche1').checked === true) {
-        matricula = document.getElementById("coche1").value;
-    } else if (document.getElementById('coche2').checked === true) {
-        matricula = document.getElementById("coche2").value;
-    } else if (document.getElementById('coche3').checked === true) {
-        matricula = document.getElementById("coche3").value;
-    } else if (document.getElementById('coche4').checked === true) {
-        matricula = document.getElementById("coche4").value;
-    }
-
-    var fechaI = document.getElementById("fechaI").value;
-    var horaI = document.getElementById("horaI").value;
-    var fechaF = document.getElementById("fechaF").value;
-    var horaF = document.getElementById("horaF").value;
-    var lugar = document.getElementById("lugar").value;
-    var transaccion = bd.transaction("reservas", "readwrite");
-    var almacen = transaccion.objectStore("reservas");
-    var agregar;
-    if (document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
-            || document.reserva.fechaF.value === '' || document.reserva.horaF.value === '' ||
-            (document.getElementById('coche1').checked === false && document.getElementById('coche2').checked === false &&
-                    document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
-        alert('Rellene todos los campos');
-    } else {
-        if (enviarsubmit()) {
-            agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
-            //agregar.addEventListener("success", mostrar, false);
-
-            agregar.onsuccess = function (e) {
-                alert('Reserva realizada correctamente');
-                   location.href="inicioLogueado.html";
-            };
-            agregar.onerror = function (e) {
-                alert('No se ha podido realizar la reserva');
-            };
+        var matricula;
+        if (document.getElementById('coche1').checked === true) {
+            matricula = document.getElementById("coche1").value;
+        } else if (document.getElementById('coche2').checked === true) {
+            matricula = document.getElementById("coche2").value;
+        } else if (document.getElementById('coche3').checked === true) {
+            matricula = document.getElementById("coche3").value;
+        } else if (document.getElementById('coche4').checked === true) {
+            matricula = document.getElementById("coche4").value;
         }
+
+        var fechaI = document.getElementById("fechaI").value;
+        var horaI = document.getElementById("horaI").value;
+        var fechaF = document.getElementById("fechaF").value;
+        var horaF = document.getElementById("horaF").value;
+        var lugar = document.getElementById("lugar").value;
+        var transaccion = bd.transaction("reservas", "readwrite");
+        var almacen = transaccion.objectStore("reservas");
+        var agregar;
+        if (document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
+                || document.reserva.fechaF.value === '' || document.reserva.horaF.value === '' ||
+                (document.getElementById('coche1').checked === false && document.getElementById('coche2').checked === false &&
+                        document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
+            alert('Rellene todos los campos');
+        } else {
+            if (enviarsubmit()) {
+                agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
+                //agregar.addEventListener("success", mostrar, false);
+
+                agregar.onsuccess = function (e) {
+                    alert('Reserva realizada correctamente');
+                    location.href = "inicioLogueado.html";
+                };
+                agregar.onerror = function (e) {
+                    alert('No se ha podido realizar la reserva');
+                };
+            }
+        }
+    } else {
+        alert("Debes iniciar sesión");
+        location.href = "inicioSesion.html";
     }
-}
-else{
-    alert("Debes iniciar sesión");
-    location.href="inicioSesion.html";
-}
 }
 function enviarsubmit() {
     var enviar;
@@ -166,7 +165,7 @@ function agregarobjeto() {
     var nombre = document.getElementById("nombre").value;
     var apellido = document.getElementById("apellido").value;
     var movil = document.getElementById("movil").value;
-    var imagen = document.getElementById("caja").value;
+    var imagen = document.getElementById("caja").style.backgroundImage;
     var transaccion = bd.transaction("clientes", "readwrite");
     var almacen = transaccion.objectStore("clientes");
     var agregar;

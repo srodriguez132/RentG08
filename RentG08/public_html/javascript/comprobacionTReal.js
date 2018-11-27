@@ -1,9 +1,9 @@
 window.addEventListener("load", iniciar, false);
 
-function iniciar(){
+function iniciar() {
     document.datos.addEventListener("invalid", validacion, true);
     document.datos.addEventListener("input", controlar, false);
-   
+
 }
 
 function validacion(e) {

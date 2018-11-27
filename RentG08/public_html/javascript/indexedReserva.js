@@ -41,14 +41,14 @@ function iniciar() {
 }
 
 function agregarobjeto() {
- var id = Math.random();
+    var id = Math.random();
 
 //    for (var e = 0; e < sessionStorage.length; e++) {
 //        var email = sessionStorage.key(e);
 //    }
-    
+
     var email = "a@a.com";
-    
+
     var matricula = document.getElementById("coche").value;
 
     var fechaI = document.getElementById("fechaI").value;
@@ -75,21 +75,19 @@ function agregarobjeto() {
             document.reserva.fechaF.value === '' || document.reserva.horaF.value === '' ||
             document.reserva.coche.value === '') {
         alert('Completa todos los campos');
-    }
+    } else {
+        agregar = almacen.add({id: id, email: email, matricula: matricula, fechaHoraI: fechaHoraI, fechaHoraF: fechaHoraF, lugar: lugar});
+        //agregar.addEventListener("success", mostrar, false);
 
-    else {
-            agregar = almacen.add({id: id, email: email, matricula: matricula, fechaHoraI: fechaHoraI, fechaHoraF: fechaHoraF, lugar: lugar});
-            //agregar.addEventListener("success", mostrar, false);
-
-            agregar.onsuccess = function (e) {
-                alert('Reserva completada correctamente');
+        agregar.onsuccess = function (e) {
+            alert('Reserva completada correctamente');
 //                   
-            };
+        };
 
-            agregar.onerror = function (e) {
-                alert('La reserva no se ha podido realizar');
+        agregar.onerror = function (e) {
+            alert('La reserva no se ha podido realizar');
 //               location.href="altaPacientes.html";
-            };
+        };
     }
 }
 
