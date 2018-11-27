@@ -138,10 +138,10 @@ function enviarsubmit() {
     var fechaHoy = anyo + "-" + mes + "-" + dia;
     var horaActual = hora + ":" + min;
     if (fechaI > fechaF) {
-        alert("La fecha de inicio es mayor que la fecha de fin");
+        alert("La fecha de fin debe ser mayor que la fecha de inicio");
         enviar = false;
     } else if (fechaI === fechaF && horaI > horaF) {
-        alert("La hora de inicio es mayor que la hora de fin");
+        alert("La hora de fin debe ser mayor que la hora de inicio");
         enviar = false;
     }
     else if(fechaHoy > fechaI){
@@ -153,7 +153,6 @@ function enviarsubmit() {
         enviar = false;
     }
     else {
-        alert("Fecha correcta");
         enviar = true;
     }
     return enviar;
