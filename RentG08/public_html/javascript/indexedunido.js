@@ -1,4 +1,4 @@
-var bd, cajadatos, bdCoches, bdReservas, bdClientes,cajaReservas;
+var bd, cajadatos, bdCoches, bdReservas, bdClientes, cajaReservas;
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var i = 0;
 function iniciar() {
@@ -87,48 +87,47 @@ function agregarreserva() {
     var transaccion = bd.transaction("reservas", "readwrite");
     var almacen = transaccion.objectStore("reservas");
     var agregar;
-    var hoy = new Date();
-    var anyo = hoy.getFullYear();
-    var mes = hoy.getMonth() + 1;
-    var dia = hoy.getDate();
-    var hora = hoy.getHours();
-    var min = hoy.getMinutes();
-    if (min < 10) {
-        min = '0' + min;
-    }
-
-    if (hora < 10) {
-        hora = '0' + hora;
-    }
-
-    if (dia < 10) {
-        dia = '0' + dia;
-    }
-
-    if (mes < 10) {
-        mes = '0' + mes;
-    }
-    var hoy = anyo + "-" + mes + "-" + dia;
-    var hora = hora + ":" + min;
+//    var hoy = new Date();
+//    var anyo = hoy.getFullYear();
+//    var mes = hoy.getMonth() + 1;
+//    var dia = hoy.getDate();
+//    var hora = hoy.getHours();
+//    var min = hoy.getMinutes();
+//    if (min < 10) {
+//        min = '0' + min;
+//    }
+//
+//    if (hora < 10) {
+//        hora = '0' + hora;
+//    }
+//
+//    if (dia < 10) {
+//        dia = '0' + dia;
+//    }
+//
+//    if (mes < 10) {
+//        mes = '0' + mes;
+//    }
     if (document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
             || document.reserva.fechaF.value === '' || document.reserva.horaF.value === '' ||
             (document.getElementById('coche1').checked === false && document.getElementById('coche2').checked === false &&
                     document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
         alert('Rellene todos los campos');
     }
-    else if(fechaI.value <= hoy){
-          alert('La fecha de inicio debe ser posterior a la de hoy');
-    }
-    else if(fechaI.value === hoy && horaI.value < hora){
-          alert('La hora de inicio debe ser mayor a la actual');
-    }
-      else if( fechaF.value <= fechaI.value){
-          alert('La fecha de fin debe ser mayor que la fecha de inicio');
-      }
-      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
-          alert('La hora de entrega debe ser posterior a la hora de inicio');
-      }
+//    else if(fechaI.value <= hoy){
+//          alert('La fecha de inicio debe ser posterior a la de hoy');
+//    }
+//    else if(fechaI.value === hoy && horaI.value < hora){
+//          alert('La hora de inicio debe ser mayor a la actual');
+//    }
+//      else if( fechaF.value <= fechaI.value){
+//          alert('La fecha de fin debe ser mayor que la fecha de inicio');
+//      }
+//      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
+//          alert('La hora de entrega debe ser posterior a la hora de inicio');
+//      }
     else {
+        if(enviarsubmit()){
         agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
         //agregar.addEventListener("success", mostrar, false);
 
@@ -140,6 +139,27 @@ function agregarreserva() {
             alert('No se ha podido realizar la reserva');
         };
     }
+    }
+}
+function enviarsubmit() {
+    var enviar;
+    var fechaI = document.getElementById("fechaI").value;
+    var horaI = document.getElementById("horaI").value;
+    var fechaF = document.getElementById("fechaF").value;
+    var horaF = document.getElementById("horaF").value;
+    if (fechaI > fechaF) {
+        alert("La fecha de inicio es mayor que la fecha de fin");
+        enviar = false;
+    }
+    else if(fechaI === fechaF && horaI > horaF){
+         alert("La hora de inicio es mayor que la hora de fin");
+        enviar = false;
+    }
+    else{
+    alert("Fecha correcta");
+    enviar = true;
+    }
+    return enviar;
 }
 
 function agregarobjeto() {
@@ -153,40 +173,39 @@ function agregarobjeto() {
     var transaccion = bd.transaction("clientes", "readwrite");
     var almacen = transaccion.objectStore("clientes");
     var agregar;
-     var valido = document.datos.checkValidity();
-    if(valido){ 
-    if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === '') {
-        alert('Rellene los campos');
-    } else if (document.datos.nombre.value.length <= 2) {
-        alert('El nombre debe contener más de dos caracteres');
+    var valido = document.datos.checkValidity();
+    if (valido) {
+        if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === '') {
+            alert('Rellene los campos');
+        } else if (document.datos.nombre.value.length <= 2) {
+            alert('El nombre debe contener más de dos caracteres');
+        } else {
+            agregar = almacen.add({email: email, contrasena: contrasena, nombre: nombre, apellido: apellido, movil: movil, imagen: imagen});
+            //agregar.addEventListener("success", mostrar, false);
+
+            agregar.onsuccess = function (e) {
+                alert('Registro completado correctamente');
+
+            };
+            agregar.onerror = function (e) {
+                alert('Este email ya está en uso');
+            };
+            document.getElementById("email").value = "";
+            document.getElementById("contrasena").value = "";
+            document.getElementById("nombre").value = "";
+            document.getElementById("apellido").value = "";
+            document.getElementById("movil").value = "";
+        }
+
+
     } else {
-        agregar = almacen.add({email: email, contrasena: contrasena, nombre: nombre, apellido: apellido, movil: movil, imagen: imagen});
-        //agregar.addEventListener("success", mostrar, false);
-
-        agregar.onsuccess = function (e) {
-            alert('Registro completado correctamente');
-
-        };
-        agregar.onerror = function (e) {
-            alert('Este email ya está en uso');
-        };
-        document.getElementById("email").value = "";
-        document.getElementById("contrasena").value = "";
-        document.getElementById("nombre").value = "";
-        document.getElementById("apellido").value = "";
-        document.getElementById("movil").value = "";
+        alert('Introduzca datos correctos');
     }
-
-
-}
-else{
-    alert('Introduzca datos correctos');
-}
 }
 function mostrarClientes() {
-     cajaReservas.innerHTML = "";
-    var buscar = document.getElementById("consCliente").value; 
-    var transaccion = bd.transaction(["reservas"],"readonly");
+    cajaReservas.innerHTML = "";
+    var buscar = document.getElementById("consCliente").value;
+    var transaccion = bd.transaction(["reservas"], "readonly");
     var almacen = transaccion.objectStore("reservas");
     var indice = almacen.index("BuscarCliente");
     var rango = IDBKeyRange.only(buscar);
@@ -200,16 +219,16 @@ function mostrarDatosPorClientes(e) {
 
     var cursor = e.target.result;
     if (cursor) {
-    var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
-      var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
-   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div><br />";
+        var fechaHoraI = new Date(cursor.value.fechaI + ' ' + cursor.value.horaI);
+        var fechaHoraF = new Date(cursor.value.fechaF + ' ' + cursor.value.horaF);
+        cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div><br />";
         cursor.continue();
-        }
-   }
+    }
+}
 function mostrarPorFecha() {
-     cajaReservas.innerHTML = "";
-    var buscar = document.getElementById("consFecha").value; 
-    var transaccion = bd.transaction(["reservas"],"readonly");
+    cajaReservas.innerHTML = "";
+    var buscar = document.getElementById("consFecha").value;
+    var transaccion = bd.transaction(["reservas"], "readonly");
     var almacen = transaccion.objectStore("reservas");
     var indice = almacen.index("BuscarFecha");
     var rango = IDBKeyRange.only(buscar);
@@ -223,16 +242,16 @@ function mostrarDatosPorFecha(e) {
 
     var cursor = e.target.result;
     if (cursor) {
-    var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
-      var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
-   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
+        var fechaHoraI = new Date(cursor.value.fechaI + ' ' + cursor.value.horaI);
+        var fechaHoraF = new Date(cursor.value.fechaF + ' ' + cursor.value.horaF);
+        cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
         cursor.continue();
-        }
-   }
+    }
+}
 function mostrarPorMatricula() {
-     cajaReservas.innerHTML = "";
-    var buscar = document.getElementById("consMatricula").value; 
-    var transaccion = bd.transaction(["reservas"],"readonly");
+    cajaReservas.innerHTML = "";
+    var buscar = document.getElementById("consMatricula").value;
+    var transaccion = bd.transaction(["reservas"], "readonly");
     var almacen = transaccion.objectStore("reservas");
     var indice = almacen.index("BuscarMatricula");
     var rango = IDBKeyRange.only(buscar);
@@ -246,11 +265,11 @@ function mostrarDatosPorMatricula(e) {
 
     var cursor = e.target.result;
     if (cursor) {
-    var    fechaHoraI= new Date( cursor.value.fechaI + ' '+ cursor.value.horaI);
-      var   fechaHoraF= new Date( cursor.value.fechaF +' ' +cursor.value.horaF);
-   cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
+        var fechaHoraI = new Date(cursor.value.fechaI + ' ' + cursor.value.horaI);
+        var fechaHoraF = new Date(cursor.value.fechaF + ' ' + cursor.value.horaF);
+        cajaReservas.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
         cursor.continue();
-        }
-   }
+    }
+}
 
 window.addEventListener("load", iniciar, false);
