@@ -309,11 +309,11 @@ function mostrarDatosAntes(e) {
     var cursor = e.target.result;
 
     if (cursor) {
-        if (cursor.value.fechaI < document.getElementById("fechaUsuario") && cursor.value.email === sessionStorage.getItem("email")) {
-             var fechaHoraI = new Date(cursor.value.fechaI + ' ' + cursor.value.horaI);
+        if (cursor.value.fechaI < document.getElementById("fechaUsuario").value && cursor.value.email === sessionStorage.getItem("email")) {
+        var fechaHoraI = new Date(cursor.value.fechaI + ' ' + cursor.value.horaI);
         var fechaHoraF = new Date(cursor.value.fechaF + ' ' + cursor.value.horaF);
-            cajaReservasUsuario.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";
-        
+            cajaReservasUsuario.innerHTML += "<div>" + cursor.value.email + " - " + cursor.value.matricula
+                    + " - " + fechaHoraI + " - " + fechaHoraF + " - " + cursor.value.lugar + "</div>";  
         cursor.continue();
     }
     }
