@@ -171,7 +171,8 @@ function agregarobjeto() {
     var agregar;
     var valido = document.datos.checkValidity();
     if (valido) {
-        if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === '') {
+        if (document.datos.email.value === '' || document.datos.contrasena.value === '' || document.datos.nombre.value === '' || document.datos.apellido.value === ''
+                || document.getElementById("caja").style.backgroundImage==='') {
             alert('Rellene los campos');
         } else if (document.datos.nombre.value.length <= 2) {
             alert('El nombre debe contener más de dos caracteres');
