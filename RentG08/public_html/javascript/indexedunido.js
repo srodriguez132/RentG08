@@ -87,58 +87,25 @@ function agregarreserva() {
     var transaccion = bd.transaction("reservas", "readwrite");
     var almacen = transaccion.objectStore("reservas");
     var agregar;
-//    var hoy = new Date();
-//    var anyo = hoy.getFullYear();
-//    var mes = hoy.getMonth() + 1;
-//    var dia = hoy.getDate();
-//    var hora = hoy.getHours();
-//    var min = hoy.getMinutes();
-//    if (min < 10) {
-//        min = '0' + min;
-//    }
-//
-//    if (hora < 10) {
-//        hora = '0' + hora;
-//    }
-//
-//    if (dia < 10) {
-//        dia = '0' + dia;
-//    }
-//
-//    if (mes < 10) {
-//        mes = '0' + mes;
-//    }
     if (document.reserva.fechaI.value === '' || document.reserva.horaI.value === ''
             || document.reserva.fechaF.value === '' || document.reserva.horaF.value === '' ||
             (document.getElementById('coche1').checked === false && document.getElementById('coche2').checked === false &&
                     document.getElementById('coche3').checked === false && document.getElementById('coche4').checked === false)) {
         alert('Rellene todos los campos');
     }
-//    else if(fechaI.value <= hoy){
-//          alert('La fecha de inicio debe ser posterior a la de hoy');
-//    }
-//    else if(fechaI.value === hoy && horaI.value < hora){
-//          alert('La hora de inicio debe ser mayor a la actual');
-//    }
-//      else if( fechaF.value <= fechaI.value){
-//          alert('La fecha de fin debe ser mayor que la fecha de inicio');
-//      }
-//      else if(fechaF.value === fechaI.value && horaF.value < horaF.value){
-//          alert('La hora de entrega debe ser posterior a la hora de inicio');
-//      }
     else {
-        if(enviarsubmit()){
-        agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
-        //agregar.addEventListener("success", mostrar, false);
+        if (enviarsubmit()) {
+            agregar = almacen.add({id: id, email: email, matricula: matricula, fechaI: fechaI, horaI: horaI, fechaF: fechaF, horaF: horaF, lugar: lugar});
+            //agregar.addEventListener("success", mostrar, false);
 
-        agregar.onsuccess = function (e) {
-            alert('Reserva realizada correctamente');
+            agregar.onsuccess = function (e) {
+                alert('Reserva realizada correctamente');
 //                   location.href="altaPacientes.html";
-        };
-        agregar.onerror = function (e) {
-            alert('No se ha podido realizar la reserva');
-        };
-    }
+            };
+            agregar.onerror = function (e) {
+                alert('No se ha podido realizar la reserva');
+            };
+        }
     }
 }
 function enviarsubmit() {
@@ -147,17 +114,47 @@ function enviarsubmit() {
     var horaI = document.getElementById("horaI").value;
     var fechaF = document.getElementById("fechaF").value;
     var horaF = document.getElementById("horaF").value;
+    var hoy = new Date();
+    var anyo = hoy.getFullYear();
+    var mes = hoy.getMonth() + 1;
+    var dia = hoy.getDate();
+    var hora = hoy.getHours();
+    var min = hoy.getMinutes();
+    if (min < 10) {
+        min = '0' + min;
+    }
+
+    if (hora < 10) {
+        hora = '0' + hora;
+    }
+
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+    var fechaHoy = anyo + "-" + mes + "-" + dia;
+    var horaActual = hora + ":" + min;
     if (fechaI > fechaF) {
         alert("La fecha de inicio es mayor que la fecha de fin");
         enviar = false;
-    }
-    else if(fechaI === fechaF && horaI > horaF){
-         alert("La hora de inicio es mayor que la hora de fin");
+    } else if (fechaI === fechaF && horaI > horaF) {
+        alert("La hora de inicio es mayor que la hora de fin");
         enviar = false;
     }
-    else{
-    alert("Fecha correcta");
-    enviar = true;
+    else if(fechaHoy > fechaI){
+        alert("La fecha de inicio debe ser mayor a la actual");
+        enviar = false;
+    }
+    else if(fechaHoy === fechaI && horaActual > horaI){
+        alert("La hora de inicio debe ser mayor a la actual");
+        enviar = false;
+    }
+    else {
+        alert("Fecha correcta");
+        enviar = true;
     }
     return enviar;
 }
