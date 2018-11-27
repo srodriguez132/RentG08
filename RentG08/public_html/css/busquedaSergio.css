@@ -85,18 +85,6 @@ select{
     display: block;
     width: 238px;
 }
-/*input#usuario{
-    background:#ffc url(./images/loquito.jpg) no-repeat 0 2px; probar con #ddf.
-                                                                Para mover arriba-abajo la imagen 'jugar' con 2px, 5px 
-    Para que el texto dentro del input se mueva
-    padding-left: 25px; Sirve para darle espacio ala imagen, probar con 30px 10px y ver comportamiento
-}
- 
-input#contrasenia{
-    background:#ffc url(./images/infinio.jpg) no-repeat 0 5px;
-    padding-left: 25px;
- 
-}*/
 #btnBuscar{
  color: white;
 }
@@ -114,7 +102,7 @@ input#contrasenia{
 #enlaceBoton{
     color: white;
 }
-/*Tip estas instrucciones animan al boton enviar
+/* Animación boton enviar
  * para que se vea como si se pulsara*/
 .boton:active{
     position: relative;
